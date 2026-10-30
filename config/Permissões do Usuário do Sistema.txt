@@ -1,0 +1,17 @@
+CREATE USER IF NOT EXISTS 'publico'@'localhost' IDENTIFIED BY 'publico';
+CREATE USER IF NOT EXISTS 'cliente'@'localhost' IDENTIFIED BY 'cliente';
+CREATE USER IF NOT EXISTS 'admin'@'localhost' IDENTIFIED BY 'admin';
+ 
+GRANT SELECT ON loja_online.produtos TO 'publico'@'localhost';
+GRANT SELECT ON loja_online.usuarios TO 'publico'@'localhost';
+ 
+GRANT SELECT ON loja_online.produtos TO 'cliente'@'localhost';
+GRANT SELECT ON loja_online.usuarios TO 'cliente'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON loja_online.perfil TO 'cliente'@'localhost';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON loja_online.carrinho TO 'cliente'@'localhost';
+GRANT SELECT, INSERT ON loja_online.vendas TO 'cliente'@'localhost';
+ 
+GRANT ALL PRIVILEGES ON loja_online.* TO 'admin'@'localhost';
+ 
+FLUSH PRIVILEGES;
